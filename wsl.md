@@ -5,11 +5,14 @@
 ### Arch WSL
 
 [ArchWSL](https://github.com/yuk7/ArchWSL.git)
+[ArchWSL Doc](https://wsldl-pg.github.io/ArchW-docs/)
 
 > Note: For appx install
 > Install cer file to Local Machine>Trusted People
 > Then install appx file
-> Initialize keyring for the pacman.
+> [Initialize keyring](https://wsldl-pg.github.io/ArchW-docs/How-to-Setup/#initialize-keyring) for the pacman.
+> Note: Update
+> Download and install zip or installer to overwrite existing one.
 
 ## About WSLg
 
