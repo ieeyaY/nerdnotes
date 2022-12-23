@@ -6,6 +6,11 @@
 
 [ArchWSL](https://github.com/yuk7/ArchWSL.git)
 
+> Note: For appx install
+> Install cer file to Local Machine>Trusted People
+> Then install appx file
+> Initialize keyring for the pacman.
+
 ## About WSLg
 
 ### WSLg configuration
