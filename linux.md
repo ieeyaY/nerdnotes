@@ -37,3 +37,10 @@ pacman -S gnome gnome-extra gdm
 # 字体
 pacman -S ttf-hack
 ```
+
+# Essential Packages
+
+```bash
+pacman -S --needed git base-devel
+# ArchWSL substitutes fakeroot by fakeroot-tcp
+```
