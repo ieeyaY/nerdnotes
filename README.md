@@ -9,3 +9,4 @@
 - [$\TeX$](./TeX.md)
 - 学习方法: 费曼学习法
 - [$\textup{Caf\'e}$](./cafe.md)
+- [Git](./git.md)
