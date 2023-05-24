@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!-- saved from url=(0046)file:///C:/Users/jizho/Desktop/regex_diff.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>grep、sed、awk、perl等对正则表达式的支持的差别</title>
+</head>
+
+<body>
+    <div>
+        <h1>grep、sed、awk、perl等对正则表达式的支持的差别</h1>
+        <div>
+            <table border="1">
+                <tbody>
+                    <tr>
+                        <th>元字符</th>
+                        <th>grep 2.5.1</th>
+                        <th>egrep 2.5.1</th>
+                        <th>sed 3.02<br> sed 4.07</th>
+                        <th>awk 3.1.1</th>
+                        <th>perl 5.8.0</th>
+                        <th>vim 6.1</th>
+                        <th>JavaScript ??</th>
+                    </tr>
+                    <tr>
+                        <td>转义</td>
+                        <td>\</td>
+                        <td>\</td>
+                        <td>\</td>
+                        <td>\</td>
+                        <td>\</td>
+                        <td>\</td>
+                        <td>\</td>
+                    </tr>
+                    <tr>
+                        <td>行头</td>
+                        <td>^</td>
+                        <td>^</td>
+                        <td>^</td>
+                        <td>^</td>
+                        <td>^</td>
+                        <td>^</td>
+                        <td>^</td>
+                    </tr>
+                    <tr>
+                        <td>行尾</td>
+                        <td>$</td>
+                        <td>$</td>
+                        <td>$</td>
+                        <td>$</td>
+                        <td>$</td>
+                        <td>$</td>
+                        <td>$</td>
+                    </tr>
+                    <tr>
+                        <td>n个 {n} {m,n} {m,} {,n}</td>
+                        <td>\{n\}</td>
+                        <td>{n}</td>
+                        <td>\{n\}</td>
+                        <td>{n}或\{n\} 仅定义 –posix 或
+                            –re-interval有效(要表达}和{,得用\\{和\\}
+                            没有定义–posix或–re-interval时,不能用{n}的语法,
+                            \}\{和}{同义</td>
+                        <td>{n}</td>
+                        <td>\{n\}</td>
+                        <td>{n}</td>
+                    </tr>
+                    <tr>
+                        <td>{0,}</td>
+                        <td>*</td>
+                        <td>*</td>
+                        <td>*</td>
+                        <td>*或\*, (要表达*,得用\\*)</td>
+                        <td>*</td>
+                        <td>*</td>
+                        <td>*</td>
+                    </tr>
+                    <tr>
+                        <td>{1,}</td>
+                        <td>\+</td>
+                        <td>+</td>
+                        <td>\+</td>
+                        <td>+或\+, (要表达+, 得用\\+)</td>
+                        <td>+</td>
+                        <td>\+</td>
+                        <td>+</td>
+                    </tr>
+                    <tr>
+                        <td>{0,1}</td>
+                        <td>\?</td>
+                        <td>?</td>
+                        <td>\?</td>
+                        <td>?或\?, (要表达?, 得用\\?)</td>
+                        <td>?</td>
+                        <td>\?</td>
+                        <td>?</td>
+                    </tr>
+                    <tr>
+                        <td>任意字符</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>.</td>
+                        <td>. 含\n.</td>
+                        <td>. /s修饰后则含\n</td>
+                        <td>. 除\n</td>
+                        <td>. 除\n</td>
+                    </tr>
+                    <tr>
+                        <td>(pat) 匹配并获结果</td>
+                        <td>\(pat\)</td>
+                        <td>(pat)</td>
+                        <td>\(pat\)</td>
+                        <td>(pat)或\(pat\) (要表达括号,用\\( \\) )</td>
+                        <td>(pat)</td>
+                        <td>\(pat\)</td>
+                        <td>(pat)</td>
+                    </tr>
+                    <tr>
+                        <td>(?:pat) 匹配但不获结果</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>(?:pat)</td>
+                        <td>\%(pat\)</td>
+                        <td>(?:pat)</td>
+                    </tr>
+                    <tr>
+                        <td>(?=pat) 等于预查</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>(?=pat)</td>
+                        <td>\%(pat\)\@=</td>
+                        <td>(?=pat)</td>
+                    </tr>
+                    <tr>
+                        <td>(?!pat) 不等预查</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>(?!pat)</td>
+                        <td>\%(pat\)\@!</td>
+                        <td>(?!pat)</td>
+                    </tr>
+                    <tr>
+                        <td>| 或</td>
+                        <td>\|</td>
+                        <td>|</td>
+                        <td>\|</td>
+                        <td>|或\| (要表达|,得用\\|)</td>
+                        <td>|</td>
+                        <td>\|</td>
+                        <td>|</td>
+                    </tr>
+                    <tr>
+                        <td>其中任意字符</td>
+                        <td>[xyz]</td>
+                        <td>[xyz]</td>
+                        <td>[xyz]</td>
+                        <td>[xyz]</td>
+                        <td>[xyz]</td>
+                        <td>[xyz]</td>
+                        <td>[xyz]</td>
+                    </tr>
+                    <tr>
+                        <td>[.ch.] [=ch=]</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>[.ch.]</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>单词边界 \b</td>
+                        <td>\b</td>
+                        <td>\b</td>
+                        <td>\b</td>
+                        <td>不支持</td>
+                        <td>\b</td>
+                        <td>不支持</td>
+                        <td>\b</td>
+                    </tr>
+                    <tr>
+                        <td>非单词边界 \B</td>
+                        <td>\B</td>
+                        <td>\B</td>
+                        <td>\B</td>
+                        <td>不支持</td>
+                        <td>\B</td>
+                        <td>不支持</td>
+                        <td>\B</td>
+                    </tr>
+                    <tr>
+                        <td>单词左右边界 &lt;&gt;</td>
+                        <td>\&lt; \&gt;</td>
+                        <td>\&lt; \&gt;</td>
+                        <td>\&lt; \&gt;</td>
+                        <td>不支持 (&gt;&lt;和\&gt;\&lt;和\\&gt;\\&lt;同义
+                        </td>
+                        <td>不支持(&gt;&lt;和\&gt;\&lt;同义</td>
+                        <td>\&lt; \&gt;</td>
+                        <td>不支持(&gt;&lt;和\&gt;\&lt;同义</td>
+                    </tr>
+                    <tr>
+                        <td>控制字符 /cx</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\cx</td>
+                        <td>不支持</td>
+                        <td>\cx</td>
+                        <td>不支持</td>
+                        <td>\cx</td>
+                    </tr>
+                    <tr>
+                        <td>数字\d</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\d</td>
+                        <td>\d</td>
+                        <td>\d</td>
+                    </tr>
+                    <tr>
+                        <td>非数字\D</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\D</td>
+                        <td>\D</td>
+                        <td>\D</td>
+                    </tr>
+                    <tr>
+                        <td>换页 \f</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>高版本支持</td>
+                        <td>\f</td>
+                        <td>\f</td>
+                        <td>另义 \f表示文件名字符</td>
+                        <td>\f</td>
+                    </tr>
+                    <tr>
+                        <td>换行 \n</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\n</td>
+                        <td>\n</td>
+                        <td>\n</td>
+                        <td>\n</td>
+                    </tr>
+                    <tr>
+                        <td>回车 \r</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\r</td>
+                        <td>\r</td>
+                        <td>\r</td>
+                        <td>\r</td>
+                        <td>\r</td>
+                    </tr>
+                    <tr>
+                        <td>空白 \s</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\s</td>
+                        <td>\s</td>
+                        <td>\s</td>
+                    </tr>
+                    <tr>
+                        <td>非空白 \S</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\S</td>
+                        <td>\S</td>
+                        <td>\S</td>
+                    </tr>
+                    <tr>
+                        <td>制表符 \t</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>高版本支持</td>
+                        <td>\t</td>
+                        <td>\t</td>
+                        <td>\t</td>
+                        <td>\t</td>
+                    </tr>
+                    <tr>
+                        <td>垂直制表符 \v</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>高版本支持</td>
+                        <td>\v</td>
+                        <td>\v</td>
+                        <td>另义 \v表示very magic</td>
+                        <td>\v</td>
+                    </tr>
+                    <tr>
+                        <td>单词字符 \w [A-Za-z0-9_]</td>
+                        <td>\w</td>
+                        <td>\w</td>
+                        <td>\w</td>
+                        <td>不支持</td>
+                        <td>\w</td>
+                        <td>\w</td>
+                        <td>\w</td>
+                    </tr>
+                    <tr>
+                        <td>非单词字符 \W [^A-Za-z0-9]</td>
+                        <td>\W</td>
+                        <td>\W</td>
+                        <td>\W</td>
+                        <td>不支持</td>
+                        <td>\W</td>
+                        <td>\W</td>
+                        <td>\W</td>
+                    </tr>
+                    <tr>
+                        <td>\xn 16进制</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>高版本支持</td>
+                        <td>\xn</td>
+                        <td>\xn</td>
+                        <td>另义 \x表示[0-9A-Za-z]</td>
+                        <td>\xn</td>
+                    </tr>
+                    <tr>
+                        <td>\n 八进制</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>\n</td>
+                        <td>\n</td>
+                        <td>不支持</td>
+                        <td>\n</td>
+                    </tr>
+                    <tr>
+                        <td>\n 后向引用</td>
+                        <td>\n</td>
+                        <td>\n</td>
+                        <td>\n</td>
+                        <td>\n 仅取结果可用</td>
+                        <td>\n</td>
+                        <td>\n 仅取结果可用</td>
+                        <td>\n</td>
+                    </tr>
+                    <tr>
+                        <td>[:alnum:] 字母和数字</td>
+                        <td>[:alnum:]</td>
+                        <td>[:alnum:]</td>
+                        <td>[:alnum:]</td>
+                        <td>[:alnum:]</td>
+                        <td>[:alnum:]</td>
+                        <td>[:alnum:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:alpha:] 字母</td>
+                        <td>[:alpha:]</td>
+                        <td>[:alpha:]</td>
+                        <td>[:alpha:]</td>
+                        <td>[:alpha:]</td>
+                        <td>[:alpha:]</td>
+                        <td>[:alpha:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:cntrl:] 控制字符</td>
+                        <td>[:cntrl:]</td>
+                        <td>[:cntrl:]</td>
+                        <td>[:cntrl:]</td>
+                        <td>[:cntrl:]</td>
+                        <td>[:cntrl:]</td>
+                        <td>[:cntrl:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:digit:] 数字</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:graph:] 可打印字符（不含空格）</td>
+                        <td>[:graph:]</td>
+                        <td>[:graph:]</td>
+                        <td>[:graph:]</td>
+                        <td>[:graph:]</td>
+                        <td>[:graph:]</td>
+                        <td>[:graph:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:lower:] 小写</td>
+                        <td>[:lower:]</td>
+                        <td>[:lower:]</td>
+                        <td>[:lower:]</td>
+                        <td>[:lower:]</td>
+                        <td>[:lower:]</td>
+                        <td>[:lower:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:print:] 可打印字符（含空格）</td>
+                        <td>[:print:]</td>
+                        <td>[:print:]</td>
+                        <td>[:print:]</td>
+                        <td>[:print:]</td>
+                        <td>[:print:]</td>
+                        <td>[:print:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:punct:] 标点</td>
+                        <td>[:punct:]</td>
+                        <td>[:punct:]</td>
+                        <td>[:punct:]</td>
+                        <td>[:punct:]</td>
+                        <td>[:punct:]</td>
+                        <td>[:punct:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:space:] 空格</td>
+                        <td>[:space:]</td>
+                        <td>[:space:]</td>
+                        <td>[:space:]</td>
+                        <td>[:space:]</td>
+                        <td>[:space:]</td>
+                        <td>[:space:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:upper:] 大写字母</td>
+                        <td>[:upper:]</td>
+                        <td>[:upper:]</td>
+                        <td>[:upper:]</td>
+                        <td>[:upper:]</td>
+                        <td>[:upper:]</td>
+                        <td>[:upper:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:digit:] 16进制数字
+                        </td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>[:digit:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:return:]</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>[:return:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:tab:]</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>[:tab:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:escape:]</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>[:escape:]</td>
+                        <td>不支持</td>
+                    </tr>
+                    <tr>
+                        <td>[:backspace:]</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>不支持</td>
+                        <td>[:backspace:]</td>
+                        <td>不支持</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body></html>
