@@ -7,6 +7,15 @@
 
 ## GDAL
 
+### 安装
+
+```
+conda install -c conda-forge gdal
+pip install gdal-utils
+```
+
+### Bug
+
 GDAL>raster>Merge: 不支持.img 格式, 转化成.tif使用
 
 <details>

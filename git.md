@@ -11,6 +11,7 @@ git config --list --show-origin
 git init [<directory>]
 git clone <repository> <directory>
 git clone <repository> [-b <branch>] <directory>
+git clone --bare <repo-name> <repo-name>.git     # 导出为裸仓库
 git pull                                         # git fetch --all; git merge ?
 ```
 
