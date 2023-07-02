@@ -40,6 +40,16 @@ pacman -S gnome gnome-extra gdm
 pacman -S ttf-hack
 ```
 
+## Archlinux install Plasma
+```bash
+# minimal
+pacman -S plasma-desktop
+# general
+pacman -S plasma
+    # or
+pacman -S plasma-meta
+```
+
 ## [Arch Build System](https://wiki.archlinuxcn.org/wiki/Arch_%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F)
 
 使用 $\textsf{asp}^\textsf{包}$ 通过 Git 获取 PKGBUILD 源码
@@ -116,3 +126,26 @@ For bash and find
    例如，`ls /path/to/directory/[abc]*` 将匹配以字母 "a"、"b" 或 "c" 开头的文件或目录。
 4. `**`：(expanded wildcards)匹配任意级别的目录。
    例如，`ls /path/to/directory/**/*.txt` 将匹配指定目录及其子目录中的所有 `txt` 文件。
+
+## CLI Pipeline
+
+问题出在管道传参或bash脚本中参数常被空格分开
+
+### `xargs`
+
+> (https://www.cnblogs.com/chyingp/p/linux-command-xargs.html)
+
+```
+ls *.js | xargs -t -n2 ls -al
+```
+列出所有js文件传给 `xargs`, 先打印, 再2个为一组执行ls命令
+```
+find . -name '*.css' -print0 | xargs -0 -t ls -al
+```
+`find -print0` 让每个输出以 `NULL` 结尾而不是 `\n`, `xargs -0` 以 `NULL` 为分隔符识别
+
+### `read`
+
+> (https://www.cnblogs.com/klb561/p/9245696.html)
+
+`read` 命令读入stdIO, 并赋给shell变量, ( 可用重定向改为从文件等地方读入 )
