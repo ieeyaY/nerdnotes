@@ -133,6 +133,17 @@ For bash and find
 
 ### `xargs`
 
+默认将标准输入按\s拆分成多个参数
+`xargs -n max-args` 1 次命令最多传递的参数个数, 超过则执行多次
+`xargs -L max-lines` 1 次命令最多传递的参数行数, 超过则执行多次
+`xargs -d delim` 以 delim 为分隔符 (会使 \s 识别为参数)
+    可以以NULL为分隔符`find . -print0 | xargs -0`
+`xargs -p` (prompt)提示命令, 并确认 `xargs -t` (type)提示命令, 不确认
+`xargs -r` 空参数则不执行命令
+`xargs -I {} <command> {} <args>` 占位符
+标准输入中有\则xargs不识别, 用"\" '\'
+
+#### 一些用法
 > (https://www.cnblogs.com/chyingp/p/linux-command-xargs.html)
 
 ```
