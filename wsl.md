@@ -20,9 +20,35 @@ install desktop first then gvim, etc.
 man-db man-page base-devel plasma-desktop gvim neofetch ctags 
 git perl-rename bash-completion openssh tree cmake python-pip pyright python-debugpy python-virtualenv autopep8 flake8(vim-syntastic) zip unzip
 python-json5 (fortls dep)
-vim-language-server fortls (aur)
+vim-language-server fortls cmake-language-server(aur)
 man-page-zh_cn adobe-source-han-serif-cn-fonts expac (optional) 
 ```
+
+### wsl2 rime
+
+#### ibus-rime
+
+```
+pacman -S ibus-rime rime-wubi
+yay -S ibus-qt # 可选
+```
+
+bashrc加入
+```
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -d -x
+```
+
+#### fcitx5-rime
+
+```
+pacman -S fcitx5-im fcitx-rime rime-wubi
+yay -S fcitx5-input-support
+```
+
+不要用shift切换中英, linux下输入法切换, 候选词切换等按键由fcitx和ibus等控制, 方案切换最好用F4, 加入control+F4等可能被拦截[TODO]
 
 ## About WSLg
 
