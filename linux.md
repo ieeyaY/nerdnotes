@@ -28,6 +28,18 @@ Allow sudo
 2. uncomment or add line `%<group> ALL=(ALL:ALL) [NOPASSWD] ALL`
    > Note: line start without `%` indicates a user, e.g. `root ALL=(ALL:ALL) ALL`
 
+## tty Fonts
+
+`setfont` 命令, 或
+`/etc/vconsole.conf` 配置文件, 支持`/usr/share/kbd/consolefonts`中的字体
+```conf
+KEYMAP=us
+FONT=ter-????
+XKBLAYOUT=us
+XKBMODEL=pc105+inet
+XKBOPTIONS=terminate:ctrl_alt_kbsp
+```
+
 ## Archlinux install Gnome
 
 安装显卡图形驱动
@@ -59,6 +71,7 @@ pacman -S plasma-meta
 ```bash
 pacman -S --needed git base-devel
 # ArchWSL substitutes fakeroot by fakeroot-tcp
+yay -S mkinitcpio-firmware
 ```
 
 ## Relative tools
