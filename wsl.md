@@ -65,3 +65,13 @@ yay -S fcitx5-input-support
 ## Hyper-V
 
 [Enable Hyper-V](https://github.com/littletaoishere/WindowsHomeHyperV.git)
+
+
+## Optimize Disk
+
+To compress disk and reclaim disk space
+```powershell
+Optimize-VHD -Path "C:\path\to\your.vhdx" -Mode Full
+```
+vhdx path:
+`%LOCALAPPDATA%\Packages\<wslpackage>\LocalState\<distro>.vhdx`
