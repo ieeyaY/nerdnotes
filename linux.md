@@ -127,6 +127,35 @@ Vim macro:
 | tools     | 工具（unicode、vimspell等）                                          |
 | tutor     | 入门教程                                                             |
 
+### 7-Zip
+
+#### Switches
+-m\<Parameters\>
+| Parameter            | Default  | Description                                               |
+|----------------------|----------|-----------------------------------------------------------|
+| x=[0 \| 1 \| 3 \| 5 \| 7 \| 9 ] | 5        | Sets level of compression.                                |
+| m={MethodID}         | Deflate  | Sets a method: Copy, Deflate, Deflate64, BZip2, LZMA, PPMd.|
+| fb={NumFastBytes}    | 32       | Sets number of Fast Bytes for Deflate encoder.            |
+| pass={NumPasses}     | 1        | Sets number of Passes for Deflate encoder.                |
+| d={Size}[b\|k\|m]    | 900000   | Sets Dictionary size for BZip2                            |
+| mem={Size}[b\|k\|m]  | 24       | Sets size of used memory for PPMd.                        |
+| o={Size}             | 8        | Sets model order for PPMd.                                |
+| mt=[off \| on \| {N}]| on       | Sets multithreading mode.                                 |
+| em={EncryptionMethodID} | ZipCrypto | Sets a encryption method: ZipCrypto, AES128, AES192, AES256 |
+| cl=[off \| on]       | off      | 7-Zip always uses local code page for file names.         |
+| cu=[off \| on]       | off      | 7-Zip uses UTF-8 for file names that contain non-ASCII symbols.|
+| cp={CodePage}        | off      | Sets code page                                            |
+| tm=[off \| on]       | on       | Stores last Modified timestamps for files.                |
+| tc=[off \| on]       | off      | Stores Creation timestamps for files.                     |
+| ta=[off \| on]       | off      | Stores last Access timestamps for files.                  |
+| tp={N}               | 0        | Sets timestamp precision: 0 - Windows (100 ns), 1 - Unix (1 sec), 2 - DOS (2 sec). 3 - Windows (100 ns). |
+
+指定GBK:
+```
+7z x <archievement> -mcp=936
+```
+
+
 ## Wildcards
 
 For bash and find
