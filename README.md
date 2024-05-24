@@ -12,3 +12,4 @@
 - [Git](./git.md)
 - [Python](./python.md)
 - [Julia](./Julia.md)
+- [SQL](./SQL.md)
