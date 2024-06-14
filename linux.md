@@ -202,3 +202,5 @@ find . -name '*.css' -print0 | xargs -0 -t ls -al
 > (https://www.cnblogs.com/klb561/p/9245696.html)
 
 `read` 命令读入stdIO, 并赋给shell变量, ( 可用重定向改为从文件等地方读入 )
+
+## 指定大小生成文件 - `dd`
