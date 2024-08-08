@@ -2,6 +2,24 @@
 
 [TOC]
 
+## device info
+
+`lscpu`
+`lspci`
+`lshw`
+`lsscsi`
+`lsusb`
+`lnxi`
+`df`
+`free`
+`dmidecode`
+`hdparm`
+[ref](https://linux.cn/article-6928-1.html)
+
+## benchmark 性能测试
+`unixbench` 等
+[几款优秀的Linux基准测试工具](https://www.cnblogs.com/sophiascpn/p/13796683.html)
+
 ## User and Group
 
 ### User and Group Files
@@ -61,6 +79,17 @@ pacman -S plasma
     # or
 pacman -S plasma-meta
 ```
+> Wayland 无法进入桌面而 X11 没问题; 显示器接到核显上则二者都没问题
+> 检查GPU型号和架构: [AMD驱动](https://wiki.archlinux.org/title/Xorg#AMD) 和 [NVIDIA驱动](https://wiki.archlinux.org/title/Xorg#Driver_installation)
+
+## Archlinux install remote desktop
+
+```
+yay -S sunloginclient
+```
+aur构建过程中如果失败注意查看其信赖失败的解决方案.<br/>向日葵依赖 `gconf`^aur^, 其在构建时缺少 `glib2-devel` 依赖而报错
+被控和控制都要 `start runsunloginclien.service` 才能运行
+同时, 向日葵目前不支持 `gdm`, `sddm` 等显示管理以及 wayland
 
 ## [Arch Build System](https://wiki.archlinuxcn.org/wiki/Arch_%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F)
 
@@ -74,7 +103,7 @@ pacman -S --needed git base-devel
 yay -S mkinitcpio-firmware
 ```
 
-## Relative tools
+## Useful tools
 
 ### sed
 
