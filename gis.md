@@ -16,7 +16,8 @@ pip install gdal-utils
 
 ### Bug
 
-GDAL>raster>Merge: 不支持.img 格式, 转化成.tif使用
+- GDAL>raster>Merge: 不支持.img 格式, 转化成.tif使用
+- GDAL>raster: 大量栅格文件合并, 瓦片索引或其它统一操作中如果出现输入文件投影坐标系不一致, 会转换错误, 平移到同一投影坐标系导致高程, 位置错误
 
 <details>
 <summary>GDAL 支持的栅格格式</summary>
