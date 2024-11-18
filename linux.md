@@ -218,7 +218,13 @@ C/C++调试使用vscode-cpptools
 ```
 7z x <archievement> -mcp=936
 ```
+#### 匹量解压
 
+```bash
+find -name "expr" -exec unzip -j {} "**/*.tif" -d outdir
+```
+`-j` 直接输出文件
+文件内成员通配符加`""`
 
 ## Wildcards
 
