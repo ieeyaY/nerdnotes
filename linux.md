@@ -58,6 +58,30 @@ XKBMODEL=pc105+inet
 XKBOPTIONS=terminate:ctrl_alt_kbsp
 ```
 
+## Xorg
+
+Xorg.conf格式
+BusID(`0:2:0`) --> Device(`Card0`) --> Screen, Monitor, ...
+
+### tigervnc
+
+1. vncpasswd
+```bash
+vncpasswd $XDG_CONFIG_HOME/tigervnc/passwd
+chmod 600 $XDG_CONFIG_HOME/tigervnc/passwd
+```
+2. edit `/etc/tigervnc/vncserver.users`
+3. `$XDG_CONFIG_HOME/tigervnc/config`
+4. 启动:
+   - 无头: `systemctl start vncserver@:N`
+   - 转发本地: `/etc/X11/xorg.conf.d/10-vnc.conf`
+5. vncviewer: 
+   - 无头 vncviewer host:N
+   - 转发本地 vncviewer host:0 (本地$DISPLAY)
+> [任何操作都正常，就是vnc的远程窗口画面不更新](https://forum.ubuntu.com.cn/viewtopic.php?t=219256):
+>   把桌面 效果 选成无就行了 也就是要 不要选扩展模式 不能开3D桌面。
+
+
 ## Archlinux install Gnome
 
 安装显卡图形驱动
