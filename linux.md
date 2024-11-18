@@ -180,6 +180,17 @@ Vim macro:
 | tools     | 工具（unicode、vimspell等）                                          |
 | tutor     | 入门教程                                                             |
 
+#### Vimspector
+
+C/C++调试使用vscode-cpptools
+- 使用watches debug:
+   - <pvar>, <prtlen>
+   - <pvar>[0]@<prtlen>
+   - *<pvar>@<prtlen>
+- 使用Console debug:
+   - <pvar>[0]@<prtlen>
+   - *<pvar>@<prtlen>
+
 ### 7-Zip
 
 #### Switches
