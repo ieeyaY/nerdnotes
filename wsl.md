@@ -66,6 +66,17 @@ yay -S fcitx5-input-support
 
 [Enable Hyper-V](https://github.com/littletaoishere/WindowsHomeHyperV.git)
 
+### Hyper-V winnat 占用v2ray端口
+
+> 重启一下winnat即可恢复。 
+> ```
+> > net stop winnat Windows NAT Driver
+> 服务已成功停止
+> > net start winnat Windows NAT Driver
+> 服务已经启动成功
+> ```
+
+参考: [解决V2rayN测速时提示运行Core失败，请看日志的问题 - 邮莓生活](https://mailberry.com.cn/2023/08/solve-v2rayn-core-fail-issues/)
 
 ## Optimize Disk
 
