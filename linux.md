@@ -274,3 +274,9 @@ find . -name '*.css' -print0 | xargs -0 -t ls -al
 `read` 命令读入stdIO, 并赋给shell变量, ( 可用重定向改为从文件等地方读入 )
 
 ## 指定大小生成文件 - `dd`
+
+## apt
+添加32位库
+```
+dpkg --add-architecture i386
+```

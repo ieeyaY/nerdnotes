@@ -32,3 +32,35 @@ ArcGIS Pro 在线地图去水印
 添加制作信息
 `Insert > Graphic and Text > Dynamic Text > Layout, Service Layer Credits`
 图层中去消可见性
+
+# Taudem
+
+Pitremove 填洼
+D8 Flow Directions D8流向 d8:{NAME}p,d8slope:{NAME}sd8 
+D-Infinity Flow Direction D-Infinity流向
+D8 Contributing Area 累积流 {NAME}ad8
+Grid Network 最大河长, strahler , 总河长 {NAME}plen {NAME}gord {NAME}tlen
+
+Stream Definition by Threshold 阈值河段
+Stream Reach and Watershed
+对话框参考
+Output_Network_Connectivity_Tree {NAME}tree
+此输出是一个文本文件，详细说明了存储在流网络树文件中的网络拓扑连接性。栏目如下：
+链接数量（任意 - 将根据所使用的进程数量而变化）
+网络坐标 (*coord.dat) 文件中的起始点编号（从 0 开始索引）
+网络坐标 (*coord.dat) 文件中的端点编号（从 0 开始索引）
+下一个（下游）链接号。指向链接号。 -1表示没有下游链接，即终端链接
+第一个上一个（上游）链接号。指向链接号。 -1表示没有上行链路。
+第二个上一个（上游）链接号。指向链接号。 -1表示没有上行链路。如果只有一个前一链路为-1，则表示内部监控点的范围在逻辑上被分割，但网络不会分叉。
+斯特拉勒链接令
+链路下游端的监控点标识符。 -1表示下游端不是监控点。
+链路的网络规模，按上游源的数量计算（遵循 Shreve）。
+
+Output_Network_Coordinates {NAME}coord
+
+This output is a text file that contains the coordinates and attributes of points along the stream network. Columns are as follows:
+    X coordinate
+    Y Coordinate
+    Distance along channels to the downstream end of a terminal link
+    Elevation
+    Contributing area
